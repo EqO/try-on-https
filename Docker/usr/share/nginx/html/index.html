@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<h1>Let's make it HTTPS</h1>
+<p>Input URL of the page:</p>
+<p>Name: <input type="text" ng-model="url"></p>
+
+<p>Input HTTP host header (optional):</p>
+<p>Name: <input type="text" ng-model="host"></p>
+
+<h2>Pass</h2>
+In this mode it will fetch HTTP page as it is returned by server without changing anything. 
+<a ng-href="https:/pass/{{host_str()}}{{url}}"><p ng-bind="url"></p></a>
+
+<h2>Upgrade own</h2>
+In this mode it will fetch HTTP page and convert all the links on the same domain (as specified in URL) to HTTPS.
+<a ng-href="https:/upgrade_own/{{host_str()}}{{url}}"><p ng-bind="url"></p></a>
+
+<h2>Upgrade all</h2>
+In this mode it will fetch HTTP page and convert all the HTTP links to HTTPS.
+<a ng-href="https:/upgrade_all/{{host_str()}}{{url}}"><p ng-bind="url"></p></a>
+
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.url = "http://www.chip.de/handy/";
+    $scope.host = '';
+    $scope.host_str = function() {
+        if ($scope.host != '') {
+            return "host/" + $scope.host + "/";
+        } else {
+            return '';
+        }
+    };
+});
+</script>
+</body>
+</html>

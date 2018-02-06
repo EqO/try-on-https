@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  proxy:
+    build:
+      context: ./Docker
+    image: eqosk/try-on-https
+    volumes:
+      - ./tls:/etc/nginx/tls/
+    ports:
+      - 4443:443
