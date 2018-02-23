@@ -5,7 +5,7 @@ If you are willing to try how would your web page look like when switched on HTT
 
 ## Simple initialization
 
-Download `docker-compose.yaml` file.
+Download [`docker-compose.yaml`](https://raw.githubusercontent.com/EqO/try-on-https/master/docker-compose.yaml) file from GitHub.
 
 ```
 docker-compose up
